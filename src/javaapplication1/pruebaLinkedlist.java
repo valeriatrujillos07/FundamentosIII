@@ -46,6 +46,15 @@ class Student{
         current.next = newStudent;
         }
         
+        public void print(){
+        Student current = this.head;
+        while(current.next != null){ 
+        System.out.println(current.name + "-" + current.score);
+        current = current.next;
+        }
+        
+        }
+        
         
 }
 
@@ -55,5 +64,7 @@ public class pruebaLinkedList {
   lista.add("luis", 65);
    lista.add("Ada", 65);
     lista.add("Paul", 65);
+    System.out.println();
+    lista.print();
     }
       }
