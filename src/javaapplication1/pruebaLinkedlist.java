@@ -55,6 +55,18 @@ class Student{
         
         }
         
+        public Student retrieve(String searchName){ 
+            Student current = this.head;
+            while (current.next != null) {
+            if(current.name.equals(searchName))
+            {    return current; }
+             current = current.next;
+        }
+            return null;
+
+        }
+        
+        
         
 }
 
@@ -66,5 +78,11 @@ public class pruebaLinkedList {
     lista.add("Paul", 65);
     System.out.println();
     lista.print();
+    Student found = lista.retrieve("Ada");
+    System.out.println("Found " + found.name + "Score " + found.score);
+    found = lista.retrieve("Guido");
+    if(found != null){
+    System.out.println("Found " + found.name + "Score" + found.score);
+    }
     }
       }
