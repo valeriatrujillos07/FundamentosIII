@@ -93,9 +93,39 @@ public class HanoiTowers {
         while(true) {
             // Lógica para jugar manualmente
             despliegaTorres();
+            String origen = eligeTorre("Elige la torre de origen (A,B,C,D)");
+            String destino = eligeTorre("Elige la torre de destino (A,B,C,D)");
+            int torreOrigen = origen.charAt(0) - 'A';
+            int torreDestino = destino.charAt(0) - 'A';
+            if (torres[torreOrigen].isEmpty()) {
+                System.out.println("La torre origen no puede ser vacio.");
+
+                continue;
+            }
+            if (torres[torreDestino].isEmpty()) {
+                System.out.println("La torre destino no puede ser vacio.");
+                continue;
+            }
+            moverDisco(torreOrigen, torreDestino);
 
         }
+
     }
+
+    private static boolean moverDisco(int torreOrigen, int torreDestino) {
+        if (!torres[torreDestino].isEmpty()) {
+            if (torres[torreOrigen].peek() > torres[torreDestino].peek()) {
+                System.out.println("Movimiento invalido. No puedes colocar un disco mas grande sobre uno mas pequeño");
+                return false;
+            }
+        }
+
+        int disco = torres[torreOrigen].pop();
+        torres[torreDestino].push(disco);
+        System.out.println("Moviste el disco" + disco + "de la torre" + (char)('A' + torreOrigen) + "a la torre" + (char)('A' + torreDestino) + ".");
+    return true;
+    }
+
     public static String eligeTorre(String mensaje) {
         String torre;
         do {
